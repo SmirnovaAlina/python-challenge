@@ -15,7 +15,8 @@ for row in csv_reader:
     candidates_dict[row[2]] = candidates_dict.get(row[2],0)+ 1
 
 for k,v in candidates_dict.items():
-    candidates_dict[k]= str(round((v/Total_voters) * 100), 2)
+    candidates_dict[k]= round((v/Total_voters) * 100 , 2)
+    
 maximum = max(candidates_dict, key=candidates_dict.get)
 
 print ("Election Result")
