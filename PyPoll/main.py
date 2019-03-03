@@ -15,20 +15,23 @@ for row in csv_reader:
     candidates_dict[row[2]] = candidates_dict.get(row[2],0)+ 1
 
 for k,v in candidates_dict.items():
-    candidates_dict[k]= (v/Total_voters) * 100
+    candidates_dict[k]= str(round((v/Total_voters) * 100), 2)
 maximum = max(candidates_dict, key=candidates_dict.get)
 
 print ("Election Result")
 print ("---------------------------------")
 print (F"Total Votes: {Total_voters}")
-print("----------------------------------")
+print ("----------------------------------")
 print ("{" + '\n'.join('{}:{}'.format(k, v) for k, v in candidates_dict.items()) + "}")
-print("----------------------------------")
+print ("----------------------------------")
 
 print(F"Winner: {maximum}: {candidates_dict[maximum]}")
 
 with open("out.txt", "w") as f:
-    f.write("Election Result")
-    f.write(F"Total Votes: {Total_voters}")
-    f.write("{" + '\n'.join('{}:{}'.format(k, v) for k, v in candidates_dict.items()) + "}")
+    f.write("Election Result\n")
+    f.write("----------------------------\n")
+    f.write(F"Total Votes: {Total_voters}\n")
+    f.write("-----------------------------\n")
+    f.write("{" + '\n'.join('{}:{}'.format(k, v) for k, v in candidates_dict.items()) + "}\n")
+    f.write("-----------------------------\n")
     f.write(F"Winner: {maximum}: {candidates_dict[maximum]}")
